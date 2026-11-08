@@ -1,18 +1,18 @@
 # Spring Boot Practical Assessment
 
-One Spring Boot app (Java 21, Maven, MySQL) covering all five questions. Each question lives in its own package under `src/main/java/occ/_1`.
+Five separate Spring Boot apps (Java 21, Maven, MySQL), one per question. Each has its own `pom.xml`, Maven wrapper and database, so you can open, build and run any of them on its own.
 
-| Q | Package | Entities | Conditional endpoint |
-|---|---------|----------|----------------------|
-| 1 | `library` | Author, Book | `GET /books/programming-india` |
-| 2 | `school` | Student, Course | `GET /courses/cse-high-credit` |
-| 3 | `restaurant` | Customer, FoodOrder | `GET /orders/delivered-coimbatore` |
-| 4 | `hotel` | Room, Booking | `GET /bookings/deluxe-november` |
-| 5 | `store` | Supplier, Product | `GET /products/low-stock-laptops` |
+| Q | Folder | Entities | Database | Conditional endpoint |
+|---|--------|----------|----------|----------------------|
+| 1 | `q1-library` | Author, Book | `library_db` | `GET /books/programming-india` |
+| 2 | `q2-student-course` | Student, Course | `school_db` | `GET /courses/cse-high-credit` |
+| 3 | `q3-restaurant` | Customer, FoodOrder | `restaurant_db` | `GET /orders/delivered-coimbatore` |
+| 4 | `q4-hotel` | Room, Booking | `hotel_db` | `GET /bookings/deluxe-november` |
+| 5 | `q5-store` | Supplier, Product | `store_db` | `GET /products/low-stock-laptops` |
 
-## Run
+## Run one app
 
-1. Start MySQL. The `assessment` database is created automatically.
+1. Start MySQL. The database is created automatically on first start.
 2. Set your MySQL login (defaults are user `root`, password `root`):
 
 ```bash
@@ -20,17 +20,22 @@ export DB_USER=root
 export DB_PASSWORD=your_password
 ```
 
-3. Start the app:
+3. Start the app from its folder:
 
 ```bash
+cd q1-library
 ./mvnw spring-boot:run
 ```
 
-It runs on http://localhost:8080 and the tables are created on first start.
+It runs on http://localhost:8080. To run several at once, give each its own port:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.arguments=--server.port=8081
+```
 
 ## API pattern
 
-Every question has the same endpoints. Create the parent first, then the child that points to it by id.
+All five apps have the same endpoints. Create the parent first, then the child that points to it by id.
 
 | Operation | Request |
 |-----------|---------|
@@ -46,7 +51,9 @@ Child paths: `/books`, `/courses`, `/orders`, `/bookings`, `/products`.
 
 A missing id returns 404.
 
-## Try it (Question 1)
+## Sample requests
+
+Question 1:
 
 ```bash
 curl -X POST localhost:8080/authors -H "Content-Type: application/json" \
@@ -59,7 +66,7 @@ curl localhost:8080/books/1
 curl localhost:8080/books/programming-india
 ```
 
-## Sample bodies for the other questions
+Request bodies for the other questions:
 
 ```json
 POST /students   {"studentName":"Ravi","department":"CSE","cgpa":8.5}
