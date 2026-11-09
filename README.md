@@ -62,7 +62,7 @@ All five apps have the same endpoints. Create the parent first, then the child t
 | Delete | `DELETE /books/{id}` |
 | Conditional select | `GET /books/programming-india` |
 
-Parent paths: `/authors`, `/students`, `/customers`, `/rooms`, `/suppliers`.
+Parent paths: `/authors`, `/students`, `/customers`, `/rooms`. Q5 has no supplier API: suppliers 1 (Chennai) and 2 (Mumbai) are inserted on startup from `q5-store/src/main/resources/data.sql`, so Q5 has only the five product endpoints.
 Child paths: `/books`, `/courses`, `/orders`, `/bookings`, `/products`.
 
 A missing id returns 404.
@@ -94,7 +94,6 @@ POST /orders     {"orderDate":"2026-11-05","totalAmount":1500,"status":"Delivere
 POST /rooms      {"roomNumber":"101","roomType":"Deluxe","pricePerNight":3500}
 POST /bookings   {"guestName":"Sam","checkInDate":"2026-11-10","checkOutDate":"2026-11-12","room":{"roomId":1}}
 
-POST /suppliers  {"supplierName":"TechCo","city":"Chennai","rating":4.5}
 POST /products   {"productName":"Laptop X","category":"Laptop","price":50000,"stockQuantity":5,"supplier":{"supplierId":1}}
 ```
 

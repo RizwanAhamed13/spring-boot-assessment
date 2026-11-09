@@ -31,6 +31,21 @@ q1-library/
 ├── mvnw / mvnw.cmd
 └── src/main/
     ├── java/occ/library/
+    │   ├── Application.java
+    │   ├── model/
+    │   │   ├── Author.java
+    │   │   └── Book.java
+    │   ├── repository/
+    │   │   ├── AuthorRepository.java
+    │   │   └── BookRepository.java
+    │   ├── service/
+    │   │   ├── AuthorService.java
+    │   │   └── BookService.java
+    │   ├── controller/
+    │   │   ├── AuthorController.java
+    │   │   └── BookController.java
+    │   └── exception/
+    │       └── NotFoundHandler.java
     └── resources/
         └── application.properties
 ```
@@ -547,6 +562,21 @@ q2-student-course/
 ├── mvnw / mvnw.cmd
 └── src/main/
     ├── java/occ/school/
+    │   ├── Application.java
+    │   ├── model/
+    │   │   ├── Course.java
+    │   │   └── Student.java
+    │   ├── repository/
+    │   │   ├── CourseRepository.java
+    │   │   └── StudentRepository.java
+    │   ├── service/
+    │   │   ├── CourseService.java
+    │   │   └── StudentService.java
+    │   ├── controller/
+    │   │   ├── CourseController.java
+    │   │   └── StudentController.java
+    │   └── exception/
+    │       └── NotFoundHandler.java
     └── resources/
         └── application.properties
 ```
@@ -1071,6 +1101,21 @@ q3-restaurant/
 ├── mvnw / mvnw.cmd
 └── src/main/
     ├── java/occ/restaurant/
+    │   ├── Application.java
+    │   ├── model/
+    │   │   ├── Customer.java
+    │   │   └── FoodOrder.java
+    │   ├── repository/
+    │   │   ├── CustomerRepository.java
+    │   │   └── FoodOrderRepository.java
+    │   ├── service/
+    │   │   ├── CustomerService.java
+    │   │   └── FoodOrderService.java
+    │   ├── controller/
+    │   │   ├── CustomerController.java
+    │   │   └── FoodOrderController.java
+    │   └── exception/
+    │       └── NotFoundHandler.java
     └── resources/
         └── application.properties
 ```
@@ -1596,6 +1641,21 @@ q4-hotel/
 ├── mvnw / mvnw.cmd
 └── src/main/
     ├── java/occ/hotel/
+    │   ├── Application.java
+    │   ├── model/
+    │   │   ├── Booking.java
+    │   │   └── Room.java
+    │   ├── repository/
+    │   │   ├── BookingRepository.java
+    │   │   └── RoomRepository.java
+    │   ├── service/
+    │   │   ├── BookingService.java
+    │   │   └── RoomService.java
+    │   ├── controller/
+    │   │   ├── BookingController.java
+    │   │   └── RoomController.java
+    │   └── exception/
+    │       └── NotFoundHandler.java
     └── resources/
         └── application.properties
 ```
@@ -1972,41 +2032,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.3 Book room 1 on 5 Dec 2026
-
-**Request:** `POST http://localhost:8080/bookings`
-
-Body (raw, JSON):
-
-```json
-{
-  "guestName": "Divya",
-  "checkInDate": "2026-12-05",
-  "checkOutDate": "2026-12-07",
-  "room": {
-    "roomId": 1
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "bookingId": 2,
-  "checkInDate": "2026-12-05",
-  "checkOutDate": "2026-12-07",
-  "guestName": "Divya",
-  "room": {
-    "pricePerNight": 3500.0,
-    "roomId": 1,
-    "roomNumber": "101",
-    "roomType": "Deluxe"
-  }
-}
-```
-
-### 4.4 Read booking 1
+### 4.3 Read booking 1
 
 **Request:** `GET http://localhost:8080/bookings/1`
 
@@ -2027,7 +2053,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.5 Update booking 1
+### 4.4 Update booking 1
 
 **Request:** `PUT http://localhost:8080/bookings/1`
 
@@ -2061,7 +2087,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.6 Conditional select: Deluxe rooms below 4000 per night, check-in 1 to 30 November 2026
+### 4.5 Conditional select: Deluxe rooms below 4000 per night, check-in 1 to 30 November 2026
 
 **Request:** `GET http://localhost:8080/bookings/deluxe-november`
 
@@ -2084,9 +2110,9 @@ Body (raw, JSON):
 ]
 ```
 
-### 4.7 Delete booking 2
+### 4.6 Delete booking 1
 
-**Request:** `DELETE http://localhost:8080/bookings/2`
+**Request:** `DELETE http://localhost:8080/bookings/1`
 
 **Response:** `200 OK`
 
@@ -2099,7 +2125,7 @@ Body (raw, JSON):
 
 # Experiment 5: Electronics Store Inventory Management System
 
-Suppliers and Products with a one-to-many relationship (one supplier, many products).
+Suppliers and Products with a one-to-many relationship (one supplier, many products). Suppliers 1 (Chennai) and 2 (Mumbai) are inserted automatically from data.sql, so there is no supplier API.
 
 ## Required dependencies
 
@@ -2123,8 +2149,21 @@ q5-store/
 ├── mvnw / mvnw.cmd
 └── src/main/
     ├── java/occ/store/
+    │   ├── Application.java
+    │   ├── model/
+    │   │   ├── Product.java
+    │   │   └── Supplier.java
+    │   ├── repository/
+    │   │   └── ProductRepository.java
+    │   ├── service/
+    │   │   └── ProductService.java
+    │   ├── controller/
+    │   │   └── ProductController.java
+    │   └── exception/
+    │       └── NotFoundHandler.java
     └── resources/
-        └── application.properties
+        ├── application.properties
+        └── data.sql
 ```
 
 ## Complete Java source files
@@ -2188,6 +2227,16 @@ spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/store_db?createDataba
 spring.datasource.username=${DB_USER:root}
 spring.datasource.password=${DB_PASSWORD:root}
 spring.jpa.hibernate.ddl-auto=update
+spring.jpa.defer-datasource-initialization=true
+spring.sql.init.mode=always
+```
+
+### src/main/resources/data.sql
+
+```sql
+INSERT IGNORE INTO supplier (supplier_id, supplier_name, city, rating) VALUES
+(1, 'TechWorld', 'Chennai', 4.5),
+(2, 'GadgetHub', 'Mumbai', 4.0);
 ```
 
 ### src/main/java/occ/store/Application.java
@@ -2266,37 +2315,23 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 }
 ```
 
-### src/main/java/occ/store/repository/SupplierRepository.java
-
-```java
-package occ.store.repository;
-
-import occ.store.model.Supplier;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface SupplierRepository extends JpaRepository<Supplier, Long> {
-}
-```
-
 ### src/main/java/occ/store/service/ProductService.java
 
 ```java
 package occ.store.service;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import occ.store.model.Product;
 import occ.store.repository.ProductRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository repository;
-    private final SupplierService supplierService;
 
     public Product add(Product product) {
-        product.setSupplier(supplierService.get(product.getSupplier().getSupplierId()));
         return repository.save(product);
     }
 
@@ -2307,7 +2342,7 @@ public class ProductService {
     public Product update(Long id, Product product) {
         get(id);
         product.setProductId(id);
-        return add(product);
+        return repository.save(product);
     }
 
     public void delete(Long id) {
@@ -2316,31 +2351,6 @@ public class ProductService {
 
     public List<Product> lowStockLaptopsFromChennai() {
         return repository.findByCategoryAndStockQuantityLessThanAndSupplierCity("Laptop", 10, "Chennai");
-    }
-}
-```
-
-### src/main/java/occ/store/service/SupplierService.java
-
-```java
-package occ.store.service;
-
-import occ.store.model.Supplier;
-import occ.store.repository.SupplierRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-@Service
-@RequiredArgsConstructor
-public class SupplierService {
-    private final SupplierRepository repository;
-
-    public Supplier add(Supplier supplier) {
-        return repository.save(supplier);
-    }
-
-    public Supplier get(Long id) {
-        return repository.findById(id).orElseThrow();
     }
 }
 ```
@@ -2389,35 +2399,13 @@ public class ProductController {
 }
 ```
 
-### src/main/java/occ/store/controller/SupplierController.java
-
-```java
-package occ.store.controller;
-
-import occ.store.model.Supplier;
-import occ.store.service.SupplierService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
-@RestController
-@RequestMapping("/suppliers")
-@RequiredArgsConstructor
-public class SupplierController {
-    private final SupplierService service;
-
-    @PostMapping
-    Supplier add(@RequestBody Supplier supplier) {
-        return service.add(supplier);
-    }
-}
-```
-
 ### src/main/java/occ/store/exception/NotFoundHandler.java
 
 ```java
 package occ.store.exception;
 
 import java.util.NoSuchElementException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -2431,6 +2419,12 @@ public class NotFoundHandler {
     String notFound() {
         return "Not found";
     }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String badSupplier() {
+        return "Supplier does not exist";
+    }
 }
 ```
 
@@ -2438,32 +2432,7 @@ public class NotFoundHandler {
 
 Header for every request with a body: `Content-Type: application/json`.
 
-### 5.1 Create supplier 1 (Chennai)
-
-**Request:** `POST http://localhost:8080/suppliers`
-
-Body (raw, JSON):
-
-```json
-{
-  "supplierName": "TechWorld",
-  "city": "Chennai",
-  "rating": 4.5
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "city": "Chennai",
-  "rating": 4.5,
-  "supplierId": 1,
-  "supplierName": "TechWorld"
-}
-```
-
-### 5.2 Add a laptop with 5 units from supplier 1
+### 5.1 Add a laptop with 5 units from supplier 1
 
 **Request:** `POST http://localhost:8080/products`
 
@@ -2491,15 +2460,15 @@ Body (raw, JSON):
   "productName": "Dell Inspiron",
   "stockQuantity": 5,
   "supplier": {
-    "city": "Chennai",
-    "rating": 4.5,
+    "city": null,
+    "rating": null,
     "supplierId": 1,
-    "supplierName": "TechWorld"
+    "supplierName": null
   }
 }
 ```
 
-### 5.3 Add a laptop with 25 units from supplier 1
+### 5.2 Add a laptop with 25 units from supplier 1
 
 **Request:** `POST http://localhost:8080/products`
 
@@ -2527,15 +2496,15 @@ Body (raw, JSON):
   "productName": "HP Pavilion",
   "stockQuantity": 25,
   "supplier": {
-    "city": "Chennai",
-    "rating": 4.5,
+    "city": null,
+    "rating": null,
     "supplierId": 1,
-    "supplierName": "TechWorld"
+    "supplierName": null
   }
 }
 ```
 
-### 5.4 Read product 1
+### 5.3 Read product 1
 
 **Request:** `GET http://localhost:8080/products/1`
 
@@ -2557,7 +2526,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.5 Update product 1
+### 5.4 Update product 1
 
 **Request:** `PUT http://localhost:8080/products/1`
 
@@ -2593,7 +2562,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.6 Conditional select: laptops with fewer than 10 units supplied from Chennai
+### 5.5 Conditional select: laptops with fewer than 10 units supplied from Chennai
 
 **Request:** `GET http://localhost:8080/products/low-stock-laptops`
 
@@ -2617,7 +2586,7 @@ Body (raw, JSON):
 ]
 ```
 
-### 5.7 Delete product 2
+### 5.6 Delete product 2
 
 **Request:** `DELETE http://localhost:8080/products/2`
 
