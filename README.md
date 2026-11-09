@@ -10,6 +10,22 @@ Five separate Spring Boot apps (Java 21, Maven, MySQL), one per question. Each h
 | 4 | `q4-hotel` | Room, Booking | `hotel_db` | `GET /bookings/deluxe-november` |
 | 5 | `q5-store` | Supplier, Product | `store_db` | `GET /products/low-stock-laptops` |
 
+## Architecture
+
+Each app follows the same layered MVC structure. The model is the JPA entities, and the view is the JSON the controllers return.
+
+```
+occ/<name>/
+├── Application.java
+├── model/        entities (Author, Book, ...)
+├── repository/   Spring Data JPA interfaces, including the conditional query
+├── service/      business logic: parent lookup, update, search
+├── controller/   REST endpoints, call the service only
+└── exception/    NotFoundHandler: turns a missing id into 404
+```
+
+A request flows `controller -> service -> repository -> MySQL`. Controllers never touch repositories, and the child service calls the parent service to check that the referenced parent exists.
+
 ## Run one app
 
 1. Start MySQL. The database is created automatically on first start.
