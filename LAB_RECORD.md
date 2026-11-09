@@ -367,30 +367,7 @@ Body (raw, JSON):
 }
 ```
 
-### 1.2 Create author 2 (USA)
-
-**Request:** `POST http://localhost:8080/authors`
-
-Body (raw, JSON):
-
-```json
-{
-  "authorName": "John Smith",
-  "country": "USA"
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "authorId": 2,
-  "authorName": "John Smith",
-  "country": "USA"
-}
-```
-
-### 1.3 Create a book for author 1 (Programming, 700)
+### 1.2 Create a book for author 1 (Programming, 700)
 
 **Request:** `POST http://localhost:8080/books`
 
@@ -423,7 +400,7 @@ Body (raw, JSON):
 }
 ```
 
-### 1.4 Create a book for author 1 (Programming, 950)
+### 1.3 Create a book for author 1 (Programming, 950)
 
 **Request:** `POST http://localhost:8080/books`
 
@@ -456,73 +433,7 @@ Body (raw, JSON):
 }
 ```
 
-### 1.5 Create a book for author 2 (Programming, 600)
-
-**Request:** `POST http://localhost:8080/books`
-
-Body (raw, JSON):
-
-```json
-{
-  "title": "Python Basics",
-  "category": "Programming",
-  "price": 600,
-  "author": {
-    "authorId": 2
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "author": {
-    "authorId": 2,
-    "authorName": "John Smith",
-    "country": "USA"
-  },
-  "bookId": 3,
-  "category": "Programming",
-  "price": 600.0,
-  "title": "Python Basics"
-}
-```
-
-### 1.6 Create a book for author 1 (Fiction, 300)
-
-**Request:** `POST http://localhost:8080/books`
-
-Body (raw, JSON):
-
-```json
-{
-  "title": "Malgudi Days",
-  "category": "Fiction",
-  "price": 300,
-  "author": {
-    "authorId": 1
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "author": {
-    "authorId": 1,
-    "authorName": "Rajesh Kumar",
-    "country": "India"
-  },
-  "bookId": 4,
-  "category": "Fiction",
-  "price": 300.0,
-  "title": "Malgudi Days"
-}
-```
-
-### 1.7 Read book 1
+### 1.4 Read book 1
 
 **Request:** `GET http://localhost:8080/books/1`
 
@@ -542,7 +453,7 @@ Body (raw, JSON):
 }
 ```
 
-### 1.8 Update book 1
+### 1.5 Update book 1
 
 **Request:** `PUT http://localhost:8080/books/1`
 
@@ -575,27 +486,7 @@ Body (raw, JSON):
 }
 ```
 
-### 1.9 Read book 1 after update
-
-**Request:** `GET http://localhost:8080/books/1`
-
-**Response:** `200 OK`
-
-```json
-{
-  "author": {
-    "authorId": 1,
-    "authorName": "Rajesh Kumar",
-    "country": "India"
-  },
-  "bookId": 1,
-  "category": "Programming",
-  "price": 650.0,
-  "title": "Effective Java 2nd Edition"
-}
-```
-
-### 1.10 Conditional select: Programming books below 800 by authors from India
+### 1.6 Conditional select: Programming books below 800 by authors from India
 
 **Request:** `GET http://localhost:8080/books/programming-india`
 
@@ -617,24 +508,14 @@ Body (raw, JSON):
 ]
 ```
 
-### 1.11 Delete book 4
+### 1.7 Delete book 2
 
-**Request:** `DELETE http://localhost:8080/books/4`
+**Request:** `DELETE http://localhost:8080/books/2`
 
 **Response:** `200 OK`
 
 ```text
 (empty body)
-```
-
-### 1.12 Read deleted book 4
-
-**Request:** `GET http://localhost:8080/books/4`
-
-**Response:** `404 Not Found`
-
-```json
-Not found
 ```
 
 
@@ -1005,57 +886,7 @@ Body (raw, JSON):
 }
 ```
 
-### 2.2 Create student 2 (CSE, 7.2)
-
-**Request:** `POST http://localhost:8080/students`
-
-Body (raw, JSON):
-
-```json
-{
-  "studentName": "Meena",
-  "department": "CSE",
-  "cgpa": 7.2
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "cgpa": 7.2,
-  "department": "CSE",
-  "studentId": 2,
-  "studentName": "Meena"
-}
-```
-
-### 2.3 Create student 3 (ECE, 9.1)
-
-**Request:** `POST http://localhost:8080/students`
-
-Body (raw, JSON):
-
-```json
-{
-  "studentName": "Arun",
-  "department": "ECE",
-  "cgpa": 9.1
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "cgpa": 9.1,
-  "department": "ECE",
-  "studentId": 3,
-  "studentName": "Arun"
-}
-```
-
-### 2.4 Register a 4-credit course for student 1
+### 2.2 Register a 4-credit course for student 1
 
 **Request:** `POST http://localhost:8080/courses`
 
@@ -1089,7 +920,7 @@ Body (raw, JSON):
 }
 ```
 
-### 2.5 Register a 3-credit course for student 1
+### 2.3 Register a 3-credit course for student 1
 
 **Request:** `POST http://localhost:8080/courses`
 
@@ -1123,75 +954,7 @@ Body (raw, JSON):
 }
 ```
 
-### 2.6 Register a 5-credit course for student 2
-
-**Request:** `POST http://localhost:8080/courses`
-
-Body (raw, JSON):
-
-```json
-{
-  "courseName": "Machine Learning",
-  "department": "CSE",
-  "credits": 5,
-  "student": {
-    "studentId": 2
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "courseId": 3,
-  "courseName": "Machine Learning",
-  "credits": 5,
-  "department": "CSE",
-  "student": {
-    "cgpa": 7.2,
-    "department": "CSE",
-    "studentId": 2,
-    "studentName": "Meena"
-  }
-}
-```
-
-### 2.7 Register a 4-credit course for student 3
-
-**Request:** `POST http://localhost:8080/courses`
-
-Body (raw, JSON):
-
-```json
-{
-  "courseName": "VLSI Design",
-  "department": "ECE",
-  "credits": 4,
-  "student": {
-    "studentId": 3
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "courseId": 4,
-  "courseName": "VLSI Design",
-  "credits": 4,
-  "department": "ECE",
-  "student": {
-    "cgpa": 9.1,
-    "department": "ECE",
-    "studentId": 3,
-    "studentName": "Arun"
-  }
-}
-```
-
-### 2.8 Read course 1
+### 2.4 Read course 1
 
 **Request:** `GET http://localhost:8080/courses/1`
 
@@ -1212,7 +975,7 @@ Body (raw, JSON):
 }
 ```
 
-### 2.9 Update course 1
+### 2.5 Update course 1
 
 **Request:** `PUT http://localhost:8080/courses/1`
 
@@ -1246,7 +1009,7 @@ Body (raw, JSON):
 }
 ```
 
-### 2.10 Conditional select: courses above 3 credits registered by CSE students with CGPA above 8.0
+### 2.6 Conditional select: courses above 3 credits registered by CSE students with CGPA above 8.0
 
 **Request:** `GET http://localhost:8080/courses/cse-high-credit`
 
@@ -1269,7 +1032,7 @@ Body (raw, JSON):
 ]
 ```
 
-### 2.11 Delete course registration 2
+### 2.7 Delete course registration 2
 
 **Request:** `DELETE http://localhost:8080/courses/2`
 
@@ -1277,16 +1040,6 @@ Body (raw, JSON):
 
 ```text
 (empty body)
-```
-
-### 2.12 Read deleted course 2
-
-**Request:** `GET http://localhost:8080/courses/2`
-
-**Response:** `404 Not Found`
-
-```json
-Not found
 ```
 
 
@@ -1658,32 +1411,7 @@ Body (raw, JSON):
 }
 ```
 
-### 3.2 Create customer 2 (Chennai)
-
-**Request:** `POST http://localhost:8080/customers`
-
-Body (raw, JSON):
-
-```json
-{
-  "customerName": "Bala",
-  "city": "Chennai",
-  "phone": "9123456780"
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "city": "Chennai",
-  "customerId": 2,
-  "customerName": "Bala",
-  "phone": "9123456780"
-}
-```
-
-### 3.3 Create a Delivered order of 1500 for customer 1
+### 3.2 Create a Delivered order of 1500 for customer 1
 
 **Request:** `POST http://localhost:8080/orders`
 
@@ -1717,7 +1445,7 @@ Body (raw, JSON):
 }
 ```
 
-### 3.4 Create a Delivered order of 800 for customer 1
+### 3.3 Create a Delivered order of 800 for customer 1
 
 **Request:** `POST http://localhost:8080/orders`
 
@@ -1751,75 +1479,7 @@ Body (raw, JSON):
 }
 ```
 
-### 3.5 Create a Pending order of 2500 for customer 1
-
-**Request:** `POST http://localhost:8080/orders`
-
-Body (raw, JSON):
-
-```json
-{
-  "orderDate": "2026-11-07",
-  "totalAmount": 2500,
-  "status": "Pending",
-  "customer": {
-    "customerId": 1
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "customer": {
-    "city": "Coimbatore",
-    "customerId": 1,
-    "customerName": "Anu",
-    "phone": "9876543210"
-  },
-  "orderDate": "2026-11-07",
-  "orderId": 3,
-  "status": "Pending",
-  "totalAmount": 2500.0
-}
-```
-
-### 3.6 Create a Delivered order of 3000 for customer 2
-
-**Request:** `POST http://localhost:8080/orders`
-
-Body (raw, JSON):
-
-```json
-{
-  "orderDate": "2026-11-08",
-  "totalAmount": 3000,
-  "status": "Delivered",
-  "customer": {
-    "customerId": 2
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "customer": {
-    "city": "Chennai",
-    "customerId": 2,
-    "customerName": "Bala",
-    "phone": "9123456780"
-  },
-  "orderDate": "2026-11-08",
-  "orderId": 4,
-  "status": "Delivered",
-  "totalAmount": 3000.0
-}
-```
-
-### 3.7 Read order 1
+### 3.4 Read order 1
 
 **Request:** `GET http://localhost:8080/orders/1`
 
@@ -1840,7 +1500,7 @@ Body (raw, JSON):
 }
 ```
 
-### 3.8 Update order 1
+### 3.5 Update order 1
 
 **Request:** `PUT http://localhost:8080/orders/1`
 
@@ -1874,7 +1534,7 @@ Body (raw, JSON):
 }
 ```
 
-### 3.9 Conditional select: delivered orders above 1000 by customers from Coimbatore
+### 3.6 Conditional select: delivered orders above 1000 by customers from Coimbatore
 
 **Request:** `GET http://localhost:8080/orders/delivered-coimbatore`
 
@@ -1897,7 +1557,7 @@ Body (raw, JSON):
 ]
 ```
 
-### 3.10 Delete order 2
+### 3.7 Delete order 2
 
 **Request:** `DELETE http://localhost:8080/orders/2`
 
@@ -1905,16 +1565,6 @@ Body (raw, JSON):
 
 ```text
 (empty body)
-```
-
-### 3.11 Read deleted order 2
-
-**Request:** `GET http://localhost:8080/orders/2`
-
-**Response:** `404 Not Found`
-
-```json
-Not found
 ```
 
 
@@ -2288,57 +1938,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.2 Create room 2 (Deluxe, 5000)
-
-**Request:** `POST http://localhost:8080/rooms`
-
-Body (raw, JSON):
-
-```json
-{
-  "roomNumber": "102",
-  "roomType": "Deluxe",
-  "pricePerNight": 5000
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "pricePerNight": 5000.0,
-  "roomId": 2,
-  "roomNumber": "102",
-  "roomType": "Deluxe"
-}
-```
-
-### 4.3 Create room 3 (Standard, 2000)
-
-**Request:** `POST http://localhost:8080/rooms`
-
-Body (raw, JSON):
-
-```json
-{
-  "roomNumber": "103",
-  "roomType": "Standard",
-  "pricePerNight": 2000
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "pricePerNight": 2000.0,
-  "roomId": 3,
-  "roomNumber": "103",
-  "roomType": "Standard"
-}
-```
-
-### 4.4 Book room 1 on 10 Nov 2026
+### 4.2 Book room 1 on 10 Nov 2026
 
 **Request:** `POST http://localhost:8080/bookings`
 
@@ -2372,7 +1972,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.5 Book room 2 on 15 Nov 2026
+### 4.3 Book room 1 on 5 Dec 2026
 
 **Request:** `POST http://localhost:8080/bookings`
 
@@ -2380,11 +1980,11 @@ Body (raw, JSON):
 
 ```json
 {
-  "guestName": "Priya",
-  "checkInDate": "2026-11-15",
-  "checkOutDate": "2026-11-16",
+  "guestName": "Divya",
+  "checkInDate": "2026-12-05",
+  "checkOutDate": "2026-12-07",
   "room": {
-    "roomId": 2
+    "roomId": 1
   }
 }
 ```
@@ -2394,74 +1994,6 @@ Body (raw, JSON):
 ```json
 {
   "bookingId": 2,
-  "checkInDate": "2026-11-15",
-  "checkOutDate": "2026-11-16",
-  "guestName": "Priya",
-  "room": {
-    "pricePerNight": 5000.0,
-    "roomId": 2,
-    "roomNumber": "102",
-    "roomType": "Deluxe"
-  }
-}
-```
-
-### 4.6 Book room 3 on 20 Nov 2026
-
-**Request:** `POST http://localhost:8080/bookings`
-
-Body (raw, JSON):
-
-```json
-{
-  "guestName": "Karan",
-  "checkInDate": "2026-11-20",
-  "checkOutDate": "2026-11-21",
-  "room": {
-    "roomId": 3
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "bookingId": 3,
-  "checkInDate": "2026-11-20",
-  "checkOutDate": "2026-11-21",
-  "guestName": "Karan",
-  "room": {
-    "pricePerNight": 2000.0,
-    "roomId": 3,
-    "roomNumber": "103",
-    "roomType": "Standard"
-  }
-}
-```
-
-### 4.7 Book room 1 on 5 Dec 2026
-
-**Request:** `POST http://localhost:8080/bookings`
-
-Body (raw, JSON):
-
-```json
-{
-  "guestName": "Divya",
-  "checkInDate": "2026-12-05",
-  "checkOutDate": "2026-12-07",
-  "room": {
-    "roomId": 1
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "bookingId": 4,
   "checkInDate": "2026-12-05",
   "checkOutDate": "2026-12-07",
   "guestName": "Divya",
@@ -2474,41 +2006,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.8 Book room 1 on 30 Nov 2026
-
-**Request:** `POST http://localhost:8080/bookings`
-
-Body (raw, JSON):
-
-```json
-{
-  "guestName": "Arjun",
-  "checkInDate": "2026-11-30",
-  "checkOutDate": "2026-12-01",
-  "room": {
-    "roomId": 1
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "bookingId": 5,
-  "checkInDate": "2026-11-30",
-  "checkOutDate": "2026-12-01",
-  "guestName": "Arjun",
-  "room": {
-    "pricePerNight": 3500.0,
-    "roomId": 1,
-    "roomNumber": "101",
-    "roomType": "Deluxe"
-  }
-}
-```
-
-### 4.9 Read booking 1
+### 4.4 Read booking 1
 
 **Request:** `GET http://localhost:8080/bookings/1`
 
@@ -2529,7 +2027,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.10 Update booking 1
+### 4.5 Update booking 1
 
 **Request:** `PUT http://localhost:8080/bookings/1`
 
@@ -2563,7 +2061,7 @@ Body (raw, JSON):
 }
 ```
 
-### 4.11 Conditional select: Deluxe rooms below 4000 per night, check-in 1 to 30 November 2026
+### 4.6 Conditional select: Deluxe rooms below 4000 per night, check-in 1 to 30 November 2026
 
 **Request:** `GET http://localhost:8080/bookings/deluxe-november`
 
@@ -2582,23 +2080,11 @@ Body (raw, JSON):
       "roomNumber": "101",
       "roomType": "Deluxe"
     }
-  },
-  {
-    "bookingId": 5,
-    "checkInDate": "2026-11-30",
-    "checkOutDate": "2026-12-01",
-    "guestName": "Arjun",
-    "room": {
-      "pricePerNight": 3500.0,
-      "roomId": 1,
-      "roomNumber": "101",
-      "roomType": "Deluxe"
-    }
   }
 ]
 ```
 
-### 4.12 Delete booking 2
+### 4.7 Delete booking 2
 
 **Request:** `DELETE http://localhost:8080/bookings/2`
 
@@ -2606,16 +2092,6 @@ Body (raw, JSON):
 
 ```text
 (empty body)
-```
-
-### 4.13 Read deleted booking 2
-
-**Request:** `GET http://localhost:8080/bookings/2`
-
-**Response:** `404 Not Found`
-
-```json
-Not found
 ```
 
 
@@ -2987,32 +2463,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.2 Create supplier 2 (Mumbai)
-
-**Request:** `POST http://localhost:8080/suppliers`
-
-Body (raw, JSON):
-
-```json
-{
-  "supplierName": "GadgetHub",
-  "city": "Mumbai",
-  "rating": 4.0
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "city": "Mumbai",
-  "rating": 4.0,
-  "supplierId": 2,
-  "supplierName": "GadgetHub"
-}
-```
-
-### 5.3 Add a laptop with 5 units from supplier 1
+### 5.2 Add a laptop with 5 units from supplier 1
 
 **Request:** `POST http://localhost:8080/products`
 
@@ -3048,7 +2499,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.4 Add a laptop with 25 units from supplier 1
+### 5.3 Add a laptop with 25 units from supplier 1
 
 **Request:** `POST http://localhost:8080/products`
 
@@ -3084,79 +2535,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.5 Add a phone with 4 units from supplier 1
-
-**Request:** `POST http://localhost:8080/products`
-
-Body (raw, JSON):
-
-```json
-{
-  "productName": "Samsung Galaxy",
-  "category": "Phone",
-  "price": 30000,
-  "stockQuantity": 4,
-  "supplier": {
-    "supplierId": 1
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "category": "Phone",
-  "price": 30000.0,
-  "productId": 3,
-  "productName": "Samsung Galaxy",
-  "stockQuantity": 4,
-  "supplier": {
-    "city": "Chennai",
-    "rating": 4.5,
-    "supplierId": 1,
-    "supplierName": "TechWorld"
-  }
-}
-```
-
-### 5.6 Add a laptop with 3 units from supplier 2
-
-**Request:** `POST http://localhost:8080/products`
-
-Body (raw, JSON):
-
-```json
-{
-  "productName": "Lenovo ThinkPad",
-  "category": "Laptop",
-  "price": 70000,
-  "stockQuantity": 3,
-  "supplier": {
-    "supplierId": 2
-  }
-}
-```
-
-**Response:** `200 OK`
-
-```json
-{
-  "category": "Laptop",
-  "price": 70000.0,
-  "productId": 4,
-  "productName": "Lenovo ThinkPad",
-  "stockQuantity": 3,
-  "supplier": {
-    "city": "Mumbai",
-    "rating": 4.0,
-    "supplierId": 2,
-    "supplierName": "GadgetHub"
-  }
-}
-```
-
-### 5.7 Read product 1
+### 5.4 Read product 1
 
 **Request:** `GET http://localhost:8080/products/1`
 
@@ -3178,7 +2557,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.8 Update product 1
+### 5.5 Update product 1
 
 **Request:** `PUT http://localhost:8080/products/1`
 
@@ -3214,7 +2593,7 @@ Body (raw, JSON):
 }
 ```
 
-### 5.9 Conditional select: laptops with fewer than 10 units supplied from Chennai
+### 5.6 Conditional select: laptops with fewer than 10 units supplied from Chennai
 
 **Request:** `GET http://localhost:8080/products/low-stock-laptops`
 
@@ -3238,7 +2617,7 @@ Body (raw, JSON):
 ]
 ```
 
-### 5.10 Delete product 2
+### 5.7 Delete product 2
 
 **Request:** `DELETE http://localhost:8080/products/2`
 
@@ -3246,14 +2625,4 @@ Body (raw, JSON):
 
 ```text
 (empty body)
-```
-
-### 5.11 Read deleted product 2
-
-**Request:** `GET http://localhost:8080/products/2`
-
-**Response:** `404 Not Found`
-
-```json
-Not found
 ```
