@@ -83,6 +83,8 @@ curl localhost:8080/books/programming-india
 curl "localhost:8080/books/most-expensive?category=Programming"
 ```
 
+Q3 also has `GET /orders/pending?start=2026-11-01&end=2026-11-10`. It returns Pending orders above 500 placed between the two dates, both dates included. Dates use the `yyyy-MM-dd` format.
+
 Q1 also has `GET /books/most-expensive?category=...`. It returns the title, author name and price of the most expensive book(s) in that category, and returns every book if several share the highest price.
 
 Request bodies for the other questions:

@@ -1,9 +1,11 @@
 package occ.restaurant.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import occ.restaurant.model.FoodOrder;
 import occ.restaurant.service.FoodOrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -35,5 +37,11 @@ public class FoodOrderController {
     @GetMapping("/delivered-coimbatore")
     List<FoodOrder> deliveredOrdersFromCoimbatore() {
         return service.deliveredOrdersFromCoimbatore();
+    }
+
+    @GetMapping("/pending")
+    List<FoodOrder> pendingOrdersBetween(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
+                                         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end) {
+        return service.pendingOrdersBetween(start, end);
     }
 }

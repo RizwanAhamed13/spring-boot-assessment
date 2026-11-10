@@ -1,5 +1,6 @@
 package occ.restaurant.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import occ.restaurant.model.FoodOrder;
 import occ.restaurant.repository.FoodOrderRepository;
@@ -33,5 +34,9 @@ public class FoodOrderService {
 
     public List<FoodOrder> deliveredOrdersFromCoimbatore() {
         return repository.findByStatusAndTotalAmountGreaterThanAndCustomerCity("Delivered", 1000.0, "Coimbatore");
+    }
+
+    public List<FoodOrder> pendingOrdersBetween(LocalDate start, LocalDate end) {
+        return repository.findByStatusAndTotalAmountGreaterThanAndOrderDateBetween("Pending", 500.0, start, end);
     }
 }
