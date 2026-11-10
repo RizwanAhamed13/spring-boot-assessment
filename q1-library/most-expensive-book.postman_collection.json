@@ -1,0 +1,25 @@
+{
+  "info": {
+    "name": "Q1 Library - most expensive book",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Most expensive book in a category",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/books/most-expensive?category=Programming",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["books", "most-expensive"],
+          "query": [
+            { "key": "category", "value": "Programming" }
+          ]
+        }
+      }
+    }
+  ]
+}
