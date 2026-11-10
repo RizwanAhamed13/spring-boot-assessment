@@ -2,6 +2,7 @@ package occ.library.service;
 
 import java.util.List;
 import occ.library.model.Book;
+import occ.library.model.BookSummary;
 import occ.library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,9 @@ public class BookService {
 
     public List<Book> programmingBooksByIndianAuthors() {
         return repository.findByCategoryAndPriceLessThanAndAuthorCountry("Programming", 800.0, "India");
+    }
+
+    public List<BookSummary> mostExpensiveInCategory(String category) {
+        return repository.findMostExpensiveByCategory(category);
     }
 }

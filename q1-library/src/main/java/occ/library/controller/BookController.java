@@ -2,6 +2,7 @@ package occ.library.controller;
 
 import java.util.List;
 import occ.library.model.Book;
+import occ.library.model.BookSummary;
 import occ.library.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,10 @@ public class BookController {
     @GetMapping("/programming-india")
     List<Book> programmingBooksByIndianAuthors() {
         return service.programmingBooksByIndianAuthors();
+    }
+
+    @GetMapping("/most-expensive")
+    List<BookSummary> mostExpensive(@RequestParam String category) {
+        return service.mostExpensiveInCategory(category);
     }
 }

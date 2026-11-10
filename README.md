@@ -80,7 +80,10 @@ curl -X POST localhost:8080/books -H "Content-Type: application/json" \
 
 curl localhost:8080/books/1
 curl localhost:8080/books/programming-india
+curl "localhost:8080/books/most-expensive?category=Programming"
 ```
+
+Q1 also has `GET /books/most-expensive?category=...`. It returns the title, author name and price of the most expensive book(s) in that category, and returns every book if several share the highest price.
 
 Request bodies for the other questions:
 
