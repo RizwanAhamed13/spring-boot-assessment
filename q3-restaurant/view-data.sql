@@ -1,5 +1,11 @@
 USE restaurant_db;
 
+SHOW TABLES;
+
+SELECT * FROM customer;
+
+SELECT * FROM food_order;
+
 SELECT o.order_id, o.order_date, o.total_amount, o.status, c.customer_id, c.customer_name, c.city
 FROM food_order o
 JOIN customer c ON c.customer_id = o.customer_id
